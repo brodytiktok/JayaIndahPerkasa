@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('/login', function(){
     return view('login/loginform');
 });
+Route::get('/barang', [BarangController::class, 'index']);

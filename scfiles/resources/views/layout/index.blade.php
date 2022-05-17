@@ -373,7 +373,9 @@
                     </div>
                 </div>
             </section>
-
+            <section class="content">
+                @yield('content')
+            </section>
 
         </div>
 
