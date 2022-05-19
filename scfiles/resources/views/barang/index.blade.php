@@ -20,6 +20,7 @@
                     </thead>
                     <tbody>
                         <tr>
+
                             <td>{{ $items->id }}</td>
                             <td>{{ $items->nama_barang }}</td>
 

@@ -19,4 +19,6 @@ Route::get('/', function () {
 Route::get('/login', function(){
     return view('login/loginform');
 });
+
 Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/brgcreate', [BarangController::class, 'create']);
