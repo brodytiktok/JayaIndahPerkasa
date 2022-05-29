@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KaryawanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,7 @@ Route::get('/login', function(){
 
 Route::get('/barang', [BarangController::class, 'index']);
 Route::get('/brgcreate', [BarangController::class, 'create']);
+/* Resource Barang untuk akses semuanya */
+Route::resource('barang', BarangController::class);
+/* Resource Karyawan untuk akses semuanya */
+Route::resource('karyawan', KaryawanController::class);
