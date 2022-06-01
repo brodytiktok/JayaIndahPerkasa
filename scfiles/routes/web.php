@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\PekerjaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,15 +17,18 @@ use App\Http\Controllers\KaryawanController;
 */
 
 Route::get('/', function () {
-    return view('layout/index');
+    return view('dashboard/index');
 });
 Route::get('/login', function(){
     return view('login/loginform');
 });
 
-Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/brgcreate', [BarangController::class, 'create']);
+
 /* Resource Barang untuk akses semuanya */
 Route::resource('barang', BarangController::class);
 /* Resource Karyawan untuk akses semuanya */
 Route::resource('karyawan', KaryawanController::class);
+/* Resource Jabatan untuk akses semuanya */
+Route::resource('jabatan', JabatanController::class);
+/* Resource Pekerja untuk akses semuanya */
+Route::resource('pekerja', PekerjaController::class);

@@ -309,13 +309,19 @@
                                         <p>Absensi Karyawan</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('jabatan') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Jabatan Karyawan</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="bi bi-person"></i>
+                                <i class="bi bi-basket"></i>
                                 <p>
-                                    Pelanggan
+                                    Pesanan
                                     <i class="fas fa-angle-left right"></i>
                                     <span class="badge badge-info right">6</span>
                                 </p>
@@ -324,7 +330,7 @@
                                 <li class="nav-item">
                                     <a href="../layout/top-nav.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Daftar Pelanggan</p>
+                                        <p>Daftar Pesanan</p>
                                     </a>
                                 </li>
                             </ul>

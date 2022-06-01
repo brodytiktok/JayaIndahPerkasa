@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\barang;
+use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
+    // fungsi select untuk memanggil jumlah barang ke dashboard
+    public function select(){ 
+        $barangs = DB::table('barangs')->count('nama_barang');
+        return $barangs;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,7 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        // validasi data
+        // request
         $validateData = $request->validate([
             'tanggal' => 'required',
             'kode_barang' => 'required',
@@ -49,7 +55,7 @@ class BarangController extends Controller
             'stok_awal' => 'required',
             'stok_akhir' => 'required'
         ]);
-        // 2. simpan
+        // validasi data
 
         $barang = new Barang();
         $barang->tanggal = $validateData['tanggal'];
@@ -59,9 +65,9 @@ class BarangController extends Controller
         $barang->harga_jual = $validateData['harga_jual'];
         $barang->stok_awal = $validateData['stok_awal'];
         $barang->stok_akhir = $validateData['stok_akhir'];
-
+        //save
         $barang->save();
-        return redirect()->route('barang.index');
+        return redirect()->route('barang.index')->with("infocreate", "Barang $barang->nama_barang telah ditambahkan !");
     }
 
     /**
@@ -73,6 +79,7 @@ class BarangController extends Controller
     public function show(barang $barang)
     {
         //
+        return view('barang.show')->with('barang',$barang);
     }
 
     /**
@@ -84,6 +91,8 @@ class BarangController extends Controller
     public function edit(barang $barang)
     {
         //
+        
+        return view('barang.edit')->with('barang',$barang);
     }
 
     /**
@@ -96,6 +105,29 @@ class BarangController extends Controller
     public function update(Request $request, barang $barang)
     {
         //
+        $validateData = $request->validate([
+            'tanggal' => 'required',
+            'kode_barang' => 'required',
+            'nama_barang' => 'required',
+            'satuan' => 'required',
+            'harga_jual' => 'required',
+            'stok_awal' => 'required',
+            'stok_akhir' => 'required'
+        ]);
+
+        $barang = new Barang();
+        $barang->tanggal = $validateData['tanggal'];
+        $barang->kode_barang = $validateData['kode_barang'];
+        $barang->nama_barang = $validateData['nama_barang'];
+        $barang->satuan = $validateData['satuan'];
+        $barang->harga_jual = $validateData['harga_jual'];
+        $barang->stok_awal = $validateData['stok_awal'];
+        $barang->stok_akhir = $validateData['stok_akhir'];
+        $array = (array) $barang;
+
+        Barang::where('id', $barang->id)->update($array);
+        $request->session()->flash('info', 'Data barang berhasil diubah');
+        return redirect()->route('barang.index');
     }
 
     /**
@@ -107,5 +139,7 @@ class BarangController extends Controller
     public function destroy(barang $barang)
     {
         //
+        $barang->delete();
+        return redirect()->route('barang.index')->with("infodelete", "Barang $barang->nama_barang berhasil dihapus !");
     }
 }

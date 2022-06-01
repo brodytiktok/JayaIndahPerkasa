@@ -1,14 +1,17 @@
 @extends('layout.index')
 
-@section('title', 'Halaman Karyawan')
+@section('title', 'Halaman Barang')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Daftar Karyawan</h3>
+            <h3 class="card-title">Bordered Table</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div class="body mb-3">
+                <a href="{{ url('jabatan/create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i></a>
+            </div>
             @if (session()->has('infodelete'))
                 <div class="alert alert-success bg-danger">
                     {{ session()->get('infodelete') }}
@@ -19,46 +22,36 @@
                     {{ session()->get('infocreate') }}
                 </div>
             @endif
-            <table id="example2" class="table table-bordered table-hover">
-                <a href="{{ url('karyawan/create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i></a>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Foto</th>
-                        <th>Nama Lengkap</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Jabatan</th>
-                        <th>Tempat Lahir</th>
-                        <th>Alamat Lengkap</th>
-                        <th>Nomor Telepon</th>
-                        <td></td>
+                        <th style="width: 10px">ID</th>
+                        <th class="text-center">Jabatan</th>
+                        <th style="width: 100px"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($karyawans as $data)
+                    @foreach ($jabatans as $data)
                         <tr>
-                            <td><img src="{{ asset('storage/' . $data->foto) }}" width="40px" height="50px"></td>
-                            <td><a href="{{ url('karyawan/' . $data->id) }}"> {{ $data->nama_lengkap }}</a></td>
-                            <td>{{ $data->tanggal_lahir }}</td>
-                            <td>{{ $data->jabatan->jabatan }}</td>
-                            <td>{{ $data->tempat_lahir }}</td>
-                            <td>{{ $data->alamat_lengkap }}</td>
-                            <td>{{ $data->nomor_telepon }}</td>
-                            <td>
-                                <a href="{{ url('karyawan/' . $data->id) . '/edit' }}" class="btn btn-sm btn-warning"><i
+                            <td>{{ $data->id }}</td>
+                            <td class="text-center">{{ $data->jabatan }}</td>
+                            <td> <a href="{{ url('jabatan/' . $data->id) . '/edit' }}" class="btn btn-sm btn-warning"><i
                                         class="bi bi-pencil-square"></i></a>
                                 <button class="btn btn-sm btn-danger btn-hapus" data-id="{{ $data->id }}"
-                                    data-nama="{{ $data->nama_lengkap }}" data-toggle="modal"
-                                    data-target="#deleteModal"><i class="bi bi-x-circle-fill"></i></button>
+                                    data-nama="{{ $data->jabatan }}" data-toggle="modal" data-target="#deleteModal"><i
+                                        class="bi bi-x-circle-fill"></i></button>
                             </td>
+
                         </tr>
                     @endforeach
 
                 </tbody>
-
             </table>
         </div>
         <!-- /.card-body -->
+
     </div>
+    <!-- /.card -->
     <!-- /.card -->
     {{-- modal delete untuk konfirmasi --}}
     <div id="deleteModal" class="modal fade" role="dialog">
@@ -90,7 +83,7 @@
         // id disini adalah id prodi
         $('.btn-hapus').click(function() {
             let id = $(this).attr('data-id');
-            $('#formDelete').attr('action', '/karyawan/' + id);
+            $('#formDelete').attr('action', '/jabatan/' + id);
 
             let nama = $(this).attr('data-nama');
             $('#mb-konfirmasi').text("Apakah Anda yakin ingin menghapus data " + nama + " ?");

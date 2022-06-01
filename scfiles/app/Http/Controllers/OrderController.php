@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jabatan;
+use App\Models\order;
 use Illuminate\Http\Request;
-use App\Models\Karyawan;
 
-class JabatanController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,6 @@ class JabatanController extends Controller
     public function index()
     {
         //
-        
-        $jabatan =Jabatan::all();
-        
-        return view('jabatan.index')->with('jabatans',$jabatan);
     }
 
     /**
@@ -30,8 +25,6 @@ class JabatanController extends Controller
     public function create()
     {
         //
-        $jabatan = Jabatan::all();
-        return view('jabatan.create')->with('jabatans',$jabatan);
     }
 
     /**
@@ -43,26 +36,15 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         //
-        $validateData = $request->validate([
-            'jabatan' => 'required'
-        ]);
-        // validasi data
-
-        $jabatan = new Jabatan();
-        $jabatan->jabatan = $validateData['jabatan'];
-        
-        //save
-        $jabatan->save();
-        return redirect()->route('jabatan.index')->with("infocreate", "Jabatan $jabatan->jabatan telah ditambahkan !");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\jabatan  $jabatan
+     * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(jabatan $jabatan)
+    public function show(order $order)
     {
         //
     }
@@ -70,10 +52,10 @@ class JabatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\jabatan  $jabatan
+     * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(jabatan $jabatan)
+    public function edit(order $order)
     {
         //
     }
@@ -82,10 +64,10 @@ class JabatanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\jabatan  $jabatan
+     * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jabatan $jabatan)
+    public function update(Request $request, order $order)
     {
         //
     }
@@ -93,14 +75,11 @@ class JabatanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\jabatan  $jabatan
+     * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jabatan $jabatan)
+    public function destroy(order $order)
     {
         //
-        $jabatan->delete();
-        return redirect()->route('jabatan.index')->with("infodelete", "Jabatan : $jabatan->jabatan berhasil dihapus");
-
     }
 }
