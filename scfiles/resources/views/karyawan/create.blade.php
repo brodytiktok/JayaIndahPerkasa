@@ -49,7 +49,7 @@
                     <div class="col-md-6">
                         {{-- Jabatan --}}
                         <div class="form-group">
-                            <label for="jabatan_id">Nama Fakultas</label>
+                            <label for="jabatan_id">Nama Jabatan</label>
                             <select name="jabatan_id" class="form-control select2">
                                 <option value="">Pilih Jabatan</option>
                                 @foreach ($jabatans as $item)

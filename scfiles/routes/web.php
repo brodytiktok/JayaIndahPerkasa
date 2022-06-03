@@ -5,7 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PekerjaController;
-use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +34,3 @@ Route::resource('karyawan', KaryawanController::class)->middleware(['auth']);
 Route::resource('jabatan', JabatanController::class)->middleware(['auth']);
 /* Resource Pekerja untuk akses semuanya */
 Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
-/* Resource User untuk akses semuanya */
-Route::resource('user', UserController::class)->middleware(['auth']);

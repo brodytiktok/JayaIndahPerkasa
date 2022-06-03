@@ -115,18 +115,8 @@ class BarangController extends Controller
             'stok_akhir' => 'required'
         ]);
 
-        $barang = new Barang();
-        $barang->tanggal = $validateData['tanggal'];
-        $barang->kode_barang = $validateData['kode_barang'];
-        $barang->nama_barang = $validateData['nama_barang'];
-        $barang->satuan = $validateData['satuan'];
-        $barang->harga_jual = $validateData['harga_jual'];
-        $barang->stok_awal = $validateData['stok_awal'];
-        $barang->stok_akhir = $validateData['stok_akhir'];
-        $array = (array) $barang;
-
-        Barang::where('id', $barang->id)->update($array);
-        $request->session()->flash('info', 'Data barang berhasil diubah');
+        Barang::where('id', $barang->id)->update($validateData);
+        $request->session()->flash('infocreate', "Data barang $barang->nama_barang berhasil diubah");
         return redirect()->route('barang.index');
     }
 

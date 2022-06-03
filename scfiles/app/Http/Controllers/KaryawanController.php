@@ -100,6 +100,10 @@ class KaryawanController extends Controller
     public function edit(karyawan $karyawan)
     {
         //
+        $karyawan = Karyawan::all();
+        $jabatans = Jabatan::all();
+        return view('karyawan.edit')->with('karyawan',$karyawan)->with('jabatans',$jabatans);
+
     }
 
     /**
@@ -112,6 +116,37 @@ class KaryawanController extends Controller
     public function update(Request $request, karyawan $karyawan)
     {
         //
+        //// request
+        $validateData = $request->validate([
+            'foto' => 'required|file|image|max:5000',
+            'nama_lengkap' => 'required',
+            'jabatan_id' => 'required',
+            'tanggal_lahir' => 'required',
+            'tempat_lahir' => 'required',
+            'alamat_lengkap' => 'required',
+            'nomor_telepon' => 'required',
+            
+        ]);
+        // Ekstensi File Gambar
+        $ext = $request->foto->getClientOriginalExtension();
+        // Rename Nama File
+        $rename_file = 'foto-'.time().".".$ext;
+        $request->foto->storeAs('public', $rename_file);
+        // validasi data
+        $karyawan = new Karyawan();
+        $karyawan->foto = $rename_file;
+        $karyawan->nama_lengkap = $validateData['nama_lengkap'];
+        $karyawan->jabatan_id = $validateData['jabatan_id'];
+        $karyawan->tanggal_lahir = $validateData['tanggal_lahir'];
+        $karyawan->tempat_lahir = $validateData['tempat_lahir'];
+        $karyawan->alamat_lengkap = $validateData['alamat_lengkap'];
+        $karyawan->nomor_telepon = $validateData['nomor_telepon'];
+        
+        $array = (array) $prodi;
+        //save
+        Karyawan::where('id', $karyawan->id)->update($array);
+        $request->session()->flash("infocreate", "Karyawan $karyawan->nama_karyawan telah diubah !");// simpan kembali ke table karyawans
+        return redirect()->route('karyawan.index'); // redirect ke karyawan index
     }
 
     /**
