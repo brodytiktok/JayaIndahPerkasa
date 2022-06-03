@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PekerjaController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +18,21 @@ use App\Http\Controllers\PekerjaController;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard/index');
-});
-Route::get('/login', function(){
-    return view('login/loginform');
-});
+})->middleware(['auth'])->name('dashboard');
 
-
+require __DIR__.'/auth.php';
 /* Resource Barang untuk akses semuanya */
-Route::resource('barang', BarangController::class);
+Route::resource('barang', BarangController::class)->middleware(['auth']);
 /* Resource Karyawan untuk akses semuanya */
-Route::resource('karyawan', KaryawanController::class);
+Route::resource('karyawan', KaryawanController::class)->middleware(['auth']);
 /* Resource Jabatan untuk akses semuanya */
-Route::resource('jabatan', JabatanController::class);
+Route::resource('jabatan', JabatanController::class)->middleware(['auth']);
 /* Resource Pekerja untuk akses semuanya */
-Route::resource('pekerja', PekerjaController::class);
+Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
+/* Resource User untuk akses semuanya */
+Route::resource('user', UserController::class)->middleware(['auth']);
