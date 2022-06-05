@@ -68,7 +68,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ url('dashboard') }}" class="nav-link">Home</a>
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
                 </li>
 
             </ul>
@@ -114,17 +114,16 @@
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
 
-            <a href="{{ url('dashboard') }}" class="brand-link">
-                <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Jaya Indah Perkasa</span>
+            <a href="{{ url('/') }}" class="brand-link">
+                <span class="brand-text font-weight-light">Jaya Indah Perkasa
             </a>
 
             <div class="sidebar">
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
+                        <img src="../../dist/img/people.jpg" class="img-circle elevation-3" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -148,41 +147,32 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="{{ url('dashboard') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="{{ url('/') }}" class="nav-link">
+                                <i class="nav-icon bi bi-house"></i>
                                 <p>
-                                    Dashboard
+                                    Home
                                 </p>
                             </a>
                         </li>
                         {{-- menu barang --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-people"></i>
+                            <a href="{{ url('barang') }}" class=" nav-link">
+                                <i class="nav-icon bi bi-box-seam heading"></i>
                                 <p>
                                     Barang
-                                    <i class="fas fa-angle-left right"></i>
-
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('barang') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Daftar Barang</p>
-                                    </a>
-                                </li>
-                            </ul>
+
                         </li>
                         {{-- Menu Karyawan --}}
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="bi bi-people"></i>
+                                <i class="nav-icon bi bi-people"></i>
                                 <p>
                                     Karyawan
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <i class=" fas fa-angle-left right"></i>
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -192,12 +182,7 @@
                                         <p>Daftar Karyawan</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Absensi Karyawan</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="{{ url('jabatan') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -207,29 +192,27 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-basket"></i>
+                            <a href="{{ url('order') }}" class="nav-link">
+                                <i class="nav-icon bi bi-basket"></i>
                                 <p>
                                     Pesanan
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Daftar Pesanan</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        <li class="nav-item  mb-5">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a :href="route('logout')" class="nav-link"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="nav-icon bi bi-box-arrow-left"></i>
+                                    <p>
+                                        {{ __('Log Out') }}
+                                    </p>
+                                </a>
+                            </form>
                         </li>
                     </ul>
-                    </li>
 
-                    </ul>
                 </nav>
 
             </div>
@@ -263,7 +246,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2022 .</strong> All rights
             reserved.
         </footer>
 

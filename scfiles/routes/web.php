@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PekerjaController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,9 @@ use App\Http\Controllers\PekerjaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+
+Route::get('/', function () {
     return view('dashboard/index');
 })->middleware(['auth'])->name('dashboard');
 
@@ -34,3 +33,5 @@ Route::resource('karyawan', KaryawanController::class)->middleware(['auth']);
 Route::resource('jabatan', JabatanController::class)->middleware(['auth']);
 /* Resource Pekerja untuk akses semuanya */
 Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
+/* Resource Order untuk akses semuanya */
+Route::resource('order', OrderController::class)->middleware(['auth']);

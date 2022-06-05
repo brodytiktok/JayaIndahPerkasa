@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -15,6 +16,9 @@ class OrderController extends Controller
     public function index()
     {
         //
+        // fungsi select untuk memanggil jumlah karyawan ke dashboard
+        $orders = Order::all();
+        return view('order.index')->with('orders',$orders);
     }
 
     /**
