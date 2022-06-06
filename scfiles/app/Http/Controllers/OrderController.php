@@ -9,6 +9,22 @@ use App\Models\Status;
 
 class OrderController extends Controller
 {
+    /* Show jumlah barang dibeli */
+    public function getTotalItems(){
+        $orders = DB::table('orders')->sum('items');
+        return $orders;
+    }
+    /* Show jumlah pelanggan Order */
+    public function getOrder(){
+        $orders = DB::table('orders')->count('id');
+
+        return $orders;
+    }
+    /* Show jumlah pemasukan */
+    public function getIncome(){
+        $orders = DB::table('orders')->sum('biaya');
+        return $orders;
+    }
     /**
      * Display a listing of the resource.
      *

@@ -27,7 +27,11 @@
                     <!-- /.col -->
                     <div class="col-sm-4 border-right">
                         <div class="description-block">
-                            <h5 class="description-header">13,000 IDR</h5>
+                            <h5 class="description-header">
+                                @php
+                                    echo ' IDR ' . App\Http\Controllers\OrderController::getIncome();
+                                @endphp
+                            </h5>
                             <span class="description-text">INCOMING</span>
                         </div>
                         <!-- /.description-block -->
@@ -35,7 +39,11 @@
                     <!-- /.col -->
                     <div class="col-sm-4">
                         <div class="description-block">
-                            <h5 class="description-header">35</h5>
+                            <h5 class="description-header">
+                                @php
+                                    echo App\Http\Controllers\OrderController::getTotalItems();
+                                @endphp
+                            </h5>
                             <span class="description-text">PRODUCTS SOLD</span>
                         </div>
                         <!-- /.description-block -->
@@ -127,11 +135,13 @@
                             </div>
                             <div class="d-flex justify-content-center">
                                 <p class="card-text pb-2 pt-1 text-white">
-                                    1 <br>
+                                    @php
+                                        echo App\Http\Controllers\OrderController::getOrder();
+                                    @endphp <br>
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <a href="" class="text-white">Lihat Daftar Pesanan</a>
+                                <a href="{{ url('order') }}" class="text-white">Lihat Daftar Pesanan</a>
                             </div>
                         </div>
                     </div>

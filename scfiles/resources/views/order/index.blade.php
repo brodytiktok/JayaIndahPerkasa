@@ -42,9 +42,9 @@
                             <td>{{ $data->tanggal_pemesanan }}</td>
                             <td>{{ $data->tanggal_terima }}</td>
                             <td>{{ $data->items }}</td>
-                            <td>{{ $data->biaya }}</td>
                             <td>{{ $data->metode }}</td>
-                            <td>{{ $data->status }}</td>
+                            <td>{{ $data->biaya }}</td>
+                            <td>{{ $data->statuse_id }}</td>
                             <td class="text-center">
                                 <a {{-- href="{{ url('karyawan/' . $data->id) . '/edit' }}" --}} class="btn btn-sm btn-warning"><i
                                         class="bi bi-pencil-square"></i></a>

@@ -1,11 +1,11 @@
 @extends('layout.index')
 
-@section('title', 'Halaman Barang')
+@section('title', 'Halaman Karyawan')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Bordered Table</h3>
+            <h3 class="card-title">Daftar Jabatan</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
