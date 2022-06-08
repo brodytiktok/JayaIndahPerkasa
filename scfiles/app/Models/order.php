@@ -13,9 +13,9 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Status()
+    public function status()
     {
-        return $this->belongsTo('App\Models\Status');
+        return $this->belongsTo('App\Models\status');
     }
     
 }

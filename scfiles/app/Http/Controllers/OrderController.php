@@ -93,6 +93,8 @@ class OrderController extends Controller
     public function show(order $order)
     {
         //
+        $orders = Order::all();
+        return view('order.show')->with('orders',$orders);
     }
 
     /**
