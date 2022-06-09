@@ -50,7 +50,7 @@ class StatusController extends Controller
         
         //save
         $status->save();
-        return redirect()->route('status.index')->with("infocreate", "Status $status->status telah ditambahkan !"); // redirect ke karyawan index
+        return redirect()->route('status.index')->with("infocreate", "Status $status->status telah ditambahkan !"); // redirect ke status index
 
     }
 
@@ -74,6 +74,7 @@ class StatusController extends Controller
     public function edit(Status $status)
     {
         //
+        return view('status.edit')->with('status',$status);
     }
 
     /**
@@ -86,6 +87,14 @@ class StatusController extends Controller
     public function update(Request $request, Status $status)
     {
         //
+        //request
+        $validateData = $request->validate([
+            'status' => 'required'
+        ]);
+        //save
+        Status::where('id', $status->id)->update($validateData);
+        $request->session()->flash('infocreate', "Status : $status->status berhasil diubah");
+        return redirect()->route('status.index');
     }
 
     /**

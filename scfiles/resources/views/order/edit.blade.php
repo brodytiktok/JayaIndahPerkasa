@@ -9,7 +9,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action={{ route('order.update', ['order' => $order->id]) }} method="POST">
+        <form action="{{ route('order.update', ['order' => $order->id]) }}" method="POST">
             @csrf
             @method('PATCH')
             {{-- @method('PUT') --}}

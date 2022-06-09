@@ -49,7 +49,6 @@
                         <th>Status</th>
                         <td>{{ $order->statuse_id }}</td>
                     </tr>
-
                 </thead>
             </table>
             <!-- /.card-body -->
@@ -69,7 +68,5 @@
         td {
             font-size: 14px;
         }
-
-        tr {}
     </style>
 @endsection
