@@ -1,6 +1,6 @@
 @extends('layout.index')
 
-@section('title', 'Halaman Karyawan')
+@section('title', 'Halaman Jabatan')
 
 @section('content')
     <div class="card">

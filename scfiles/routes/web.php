@@ -22,19 +22,19 @@ use App\Http\Controllers\StatusController;
 
 
 Route::get('/', function () {
-    return view('dashboard/index');
-})->name('dashboard');
-/* ->middleware(['auth']) */
+    return view('dashboard.index');
+})->name('dashboard')->middleware(['auth']);
+
 require __DIR__.'/auth.php';
 /* Resource Barang untuk akses semuanya */
-Route::resource('barang', BarangController::class);
+Route::resource('barang', BarangController::class)->middleware(['auth']);
 /* Resource Karyawan untuk akses semuanya */
-Route::resource('karyawan', KaryawanController::class);
+Route::resource('karyawan', KaryawanController::class)->middleware(['auth']);
 /* Resource Jabatan untuk akses semuanya */
-Route::resource('jabatan', JabatanController::class);
+Route::resource('jabatan', JabatanController::class)->middleware(['auth']);
 /* Resource Pekerja untuk akses semuanya */
-Route::resource('pekerja', PekerjaController::class);
+Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
 /* Resource Order untuk akses semuanya */
-Route::resource('order', OrderController::class);
+Route::resource('order', OrderController::class)->middleware(['auth']);
 /* Resource Stat untuk akses semuanya */
-Route::resource('status', StatusController::class);
+Route::resource('status', StatusController::class)->middleware(['auth']);

@@ -17,12 +17,11 @@ class OrderController extends Controller
     /* Show jumlah pelanggan Order */
     public function getOrder(){
         $orders = DB::table('orders')->count('id');
-
         return $orders;
     }
     /* Show jumlah pemasukan */
     public function getIncome(){
-        $orders = DB::table('orders')->sum('biaya');
+        $orders = DB::table('orders')->where('statuse_id','1')->sum('biaya');
         return $orders;
     }
     /**

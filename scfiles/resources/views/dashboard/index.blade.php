@@ -8,7 +8,7 @@
         <div class="card card-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header text-white" style="background: url('../dist/img/photo1.png') center center;">
-                {{-- <h3 class="widget-user-username text-right">{{ Auth::user()->name }}</h3> --}}
+                <h3 class="widget-user-username text-right">{{ Auth::user()->name }}</h3>
                 <h5 class="widget-user-desc text-right">Web Designer</h5>
             </div>
             <div class="widget-user-image">

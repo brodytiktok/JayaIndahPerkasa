@@ -76,18 +76,7 @@ class JabatanController extends Controller
     public function edit(jabatan $jabatan)
     {
         //
-        // request
-        $validateData = $request->validate([
-            'jabatan' => 'required'
-        ]);
-        // validasi data
-
-        $jabatan = new Jabatan();
-        $jabatan->jabatan = $validateData['jabatan'];
-        
-        //save
-        $jabatan->save();
-        return redirect()->route('jabatan.index')->with("infocreate", "Jabatan $jabatan->jabatan telah ditambahkan !");
+        return view('jabatan.edit')->with('jabatan',$jabatan);
     }
 
     /**
@@ -99,7 +88,20 @@ class JabatanController extends Controller
      */
     public function update(Request $request, jabatan $jabatan)
     {
-        //
+        // request
+        $validateData = $request->validate([
+            'jabatan' => 'required'
+        ]);
+        // validasi data
+
+        $jabatan = new Jabatan();
+        $jabatan->jabatan = $validateData['jabatan'];
+        
+        //save
+        Jabatan::where('id', $habatan->id)->update($validateData);
+        $request->session()->flash('infocreate', "Jabatan Karyawan : $jabatan->jabatan berhasil diubah");
+        
+        return redirect()->route('order.index');
     }
 
     /**

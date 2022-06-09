@@ -14,7 +14,8 @@
                 <div class="form-group row">
                     <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="jabatan" placeholder="Masukan Jabatan">
+                        <input type="text" class="form-control" name="jabatan" placeholder="Masukan Jabatan"
+                            value="{{ old('jabatan') ?? $jabatan->jabatan }}">
                     </div>
                 </div>
             </div>

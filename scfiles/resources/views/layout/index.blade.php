@@ -100,7 +100,7 @@
                         <img src="../../dist/img/people.jpg" class="img-circle elevation-3" alt="User Image">
                     </div>
                     <div class="info">
-                        {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
