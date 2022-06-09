@@ -16,6 +16,8 @@ class StatusController extends Controller
     public function index()
     {
         //
+        $status = Status::all();
+        return view('status.index')->with('status',$status);
     }
 
     /**
@@ -26,6 +28,8 @@ class StatusController extends Controller
     public function create()
     {
         //
+        $status = Status::all();
+        return view('status.create')->with('status',$status);
     }
 
     /**
@@ -36,7 +40,18 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //request
+        $validateData = $request->validate([
+            'status' => 'required'
+        ]);
+        // validasi data
+        $status = new Status();
+        $status->status = $validateData['status'];
+        
+        //save
+        $status->save();
+        return redirect()->route('status.index')->with("infocreate", "Status $status->status telah ditambahkan !"); // redirect ke karyawan index
+
     }
 
     /**

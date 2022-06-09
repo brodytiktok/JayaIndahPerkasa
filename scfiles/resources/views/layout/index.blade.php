@@ -74,30 +74,6 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
-
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -110,11 +86,9 @@
                 </li> --}}
             </ul>
         </nav>
-
-
         <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
 
-            <a href="{{ url('/') }}" class="brand-link">
+            <a href="{{ url('/') }}" class="brand-link text-center">
                 <span class="brand-text font-weight-light">Jaya Indah Perkasa
             </a>
 
@@ -127,18 +101,6 @@
                     </div>
                     <div class="info">
                         {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
-                    </div>
-                </div>
-
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
                     </div>
                 </div>
 
@@ -162,24 +124,39 @@
                                     Barang
                                 </p>
                             </a>
-
                         </li>
                         {{-- Menu Karyawan --}}
+                        <li class="nav-item">
+                            <a href="{{ url('karyawan') }}" class="nav-link">
+                                <i class="nav-icon bi bi-people"></i>
+                                <p>
+                                    Karyawan
+                                </p>
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="{{ url('order') }}" class="nav-link">
+                                <i class="nav-icon bi bi-basket"></i>
+                                <p>
+                                    Pesanan
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-people"></i>
                                 <p>
-                                    Karyawan
+                                    Admin
                                     <i class=" fas fa-angle-left right"></i>
 
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('karyawan') }}" class="nav-link">
+                                    <a href="{{ url('status') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Daftar Karyawan</p>
+                                        <p>Status Order</p>
                                     </a>
                                 </li>
 
@@ -190,14 +167,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('order') }}" class="nav-link">
-                                <i class="nav-icon bi bi-basket"></i>
-                                <p>
-                                    Pesanan
-                                </p>
-                            </a>
                         </li>
                         <li class="nav-item  mb-5">
                             <form method="POST" action="{{ route('logout') }}">

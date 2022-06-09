@@ -48,6 +48,7 @@ class OrderController extends Controller
         //
         $status = Status::all();
         return view('order.create')->with('status',$status);
+        
     }
 
     /**
@@ -67,6 +68,7 @@ class OrderController extends Controller
             'metode' => 'required',
             'statuse_id' => 'required',
             'biaya' => 'required'
+            
         ]);
         // validasi data
 
@@ -93,8 +95,8 @@ class OrderController extends Controller
     public function show(order $order)
     {
         //
-        $orders = Order::all();
-        return view('order.show')->with('orders',$orders);
+        
+        return view('order.show')->with('order',$order);
     }
 
     /**
@@ -106,6 +108,10 @@ class OrderController extends Controller
     public function edit(order $order)
     {
         //
+        /* $order = Order::all(); */
+        $status = Status::all();
+        /* return view('order.edit')->with('status',$status)->with('order',$order); */
+        return view('order.edit')->with('order',$order)->with('status',$status);
     }
 
     /**
@@ -118,6 +124,20 @@ class OrderController extends Controller
     public function update(Request $request, order $order)
     {
         //
+        $validateData = $request->validate([
+            'nama_pelanggan' => 'required',
+            'tanggal_pemesanan' => 'required',
+            'tanggal_terima' => 'required',
+            'items' => 'required',
+            'metode' => 'required',
+            'statuse_id' => 'required',
+            'biaya' => 'required'
+        ]);
+
+        Order::where('id', $order->id)->update($validateData);
+        $request->session()->flash('infocreate', "Data Pelanggan : $order->nama_pelanggan & Urutan ke- $order->id berhasil diubah");
+        return redirect()->route('order.index');
+        
     }
 
     /**

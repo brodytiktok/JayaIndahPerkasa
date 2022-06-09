@@ -26,8 +26,8 @@
                 </div>
                 {{-- Tanggal Sampai --}}
                 <div class="form-group">
-                    <label for="tanggal_sampai">Tanggal Sampai</label>
-                    <input type="date" class="form-control" name="tanggal_sampai">
+                    <label for="tanggal_terima">Tanggal Sampai</label>
+                    <input type="date" class="form-control" name="tanggal_terima">
                 </div>
                 {{-- Items --}}
                 <div class="form-group">

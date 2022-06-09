@@ -9,68 +9,67 @@
         </div>
 
         <div class="card-header">
-            <h3 class="card-title">Informasi <span class="text-bold"
-                    style="text-decoration: underline;">
+            <h3 class="card-title">Informasi Pelanggan <span class="text-bold" style="text-decoration: underline;">
             </h3>
         </div>
-       
+
         <!-- /.card-header -->
         <div class="card-body">
             <table class="table table-bordered table-hover">
                 <thead>
-                    @foreach ($orders as $data)
                     <tr>
                         <th>Nama Pelanggan</th>
-                        <td>{{ $data->nama_pelanggan }}</td>
+                        <td>{{ $order->nama_pelanggan }}</td>
                     </tr>
                     <tr>
                         <th>Nomor Pesanan</th>
-                        <td>{{ $data->no_order }}</td>
+                        <td>{{ $order->id }}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Pesanan</th>
-                        <td>{{ $data->tanggal_pemesanan }}</td>
+                        <td>{{ $order->tanggal_pemesanan }}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Sampai</th>
-                        <td>{{ $data->tanggal_terima }}</td>
+                        <td>{{ $order->tanggal_terima }}</td>
                     </tr>
                     <tr>
                         <th>Item</th>
-                        <td>{{ $data->items }}</td>
+                        <td>{{ $order->items }}</td>
                     </tr>
                     <tr>
                         <th>Metode Pembayaran</th>
-                        <td>{{ $data->metode }}</td>
+                        <td>{{ $order->metode }}</td>
                     </tr>
                     <tr>
                         <th>Total Biaya</th>
-                        <td>{{ $data->biaya }}</td>
+                        <td>{{ $order->biaya }}</td>
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <td>{{ $data->status }}</td>
+                        <td>{{ $order->statuse_id }}</td>
                     </tr>
-                    @endforeach  
+
                 </thead>
             </table>
-        <!-- /.card-body -->
+            <!-- /.card-body -->
         </div>
     </div>
-<style>
-    table{
-        border: 1px;
-        border-style: groove;
-    }
-    th{
-        text-align: center;
-        font-size: 20px;
-    }
-    td{
-        font-size: 20px;
-    }
-    tr{
-        
-    }
-</style>
+    <style>
+        table {
+            border: 1px;
+            border-style: groove;
+        }
+
+        th {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        tr {}
+    </style>
 @endsection
