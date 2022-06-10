@@ -15,12 +15,12 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('foto');
-            $table->date('tanggal_lahir');
-            $table->string('tempat_lahir');
-            $table->string('alamat_lengkap');
-            $table->string('nomor_telepon');
+            $table->string('nama_lengkap')->nullable();
+            $table->string('foto')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('alamat_lengkap')->nullable();
+            $table->string('nomor_telepon')->nullable();
             $table->timestamps();
         });
     }

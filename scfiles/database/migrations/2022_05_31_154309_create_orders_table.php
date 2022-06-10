@@ -15,14 +15,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pelanggan');
-            $table->string('no_order');
-            $table->date('tanggal_pemesanan');
-            $table->date('tanggal_terima');
-            $table->integer('items');
-            $table->string('metode');
+            $table->string('nama_pelanggan')->nullable();
+            $table->string('no_order')->nullable();
+            $table->date('tanggal_pemesanan')->nullable();
+            $table->date('tanggal_terima')->nullable();
+            $table->integer('items')->nullable();
+            $table->string('metode')->nullable();
             
-            $table->integer('biaya');
+            $table->integer('biaya')->nullable();
 
             $table->timestamps();
         });

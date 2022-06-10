@@ -15,8 +15,8 @@ class CreatePekerjasTable extends Migration
     {
         Schema::create('pekerjas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('karyawan_id'); // karyawan
-            $table->unsignedBigInteger('jabatan_id'); // Jabatan
+            $table->unsignedBigInteger('karyawan_id')->nullable(); // karyawan
+            $table->unsignedBigInteger('jabatan_id')->nullable(); // Jabatan
             $table->timestamps();
         
             //Foreign Key
