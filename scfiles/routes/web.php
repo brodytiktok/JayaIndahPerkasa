@@ -7,6 +7,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,10 @@ use App\Http\Controllers\StatusController;
 
 
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('dashboard.index');
-})->name('dashboard')->middleware(['auth']);
+})->name('dashboard')->middleware(['auth']); */
 
-require __DIR__.'/auth.php';
 /* Resource Barang untuk akses semuanya */
 Route::resource('barang', BarangController::class)->middleware(['auth']);
 /* Resource Karyawan untuk akses semuanya */
@@ -38,3 +38,7 @@ Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
 Route::resource('order', OrderController::class)->middleware(['auth']);
 /* Resource Stat untuk akses semuanya */
 Route::resource('status', StatusController::class)->middleware(['auth']);
+/* Resource Dashboard untuk akses semuanya */
+Route::resource('dashboard', DashboardController::class)->middleware(['auth']);
+
+require __DIR__.'/auth.php';

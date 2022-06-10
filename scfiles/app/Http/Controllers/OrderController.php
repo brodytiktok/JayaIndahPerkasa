@@ -9,6 +9,11 @@ use App\Models\Status;
 
 class OrderController extends Controller
 {
+    /* Show jumlah status graph */
+    /* public function getStatusGrf(){
+        $orders = DB::table('orders')->sum('items');
+        return $orders;
+    } */
     /* Show jumlah barang dibeli */
     public function getTotalItems(){
         $orders = DB::table('orders')->sum('items');
