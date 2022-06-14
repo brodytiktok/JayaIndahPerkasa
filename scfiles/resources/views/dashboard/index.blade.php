@@ -55,6 +55,7 @@
         </div>
         <!-- /.widget-user -->
     </div>
+    
     <div class="card-body">
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
