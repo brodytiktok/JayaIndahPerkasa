@@ -142,7 +142,7 @@ class KaryawanController extends Controller
         $karyawan->alamat_lengkap = $validateData['alamat_lengkap'];
         $karyawan->nomor_telepon = $validateData['nomor_telepon'];
         
-        $array = (array) $prodi;
+        $array = (array) $karyawan;
         //save
         Karyawan::where('id', $karyawan->id)->update($array);
         $request->session()->flash("infocreate", "Karyawan $karyawan->nama_karyawan telah diubah !");// simpan kembali ke table karyawans
